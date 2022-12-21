@@ -38,7 +38,7 @@ class Client(computer.Computer):
 
         while steffTalks.lower != "shutdown":
             steffTalks = input(">>")
-            self.web_socket.sendall(steffTalks.encode())#ENCODE???--DECODE????
+            self.web_socket.sendall(steffTalks.encode())#ENCODE???--DECODE???? UTF-8 unnötig
          ######TEST keine Fehlermeldung und auch  keine Ausgabe???
             data = self.web_socket.recv(1024)
             print(data.decode())
@@ -53,7 +53,7 @@ def main():
     #try:    
     steffClient = Client("900 W","Intel i7",3.6, "16 GB", "Windows 10", "192.168.178.231","127.0.0.1", "80")
 
-    steffClient.createSocket("127.0.0.1",8080)
+    steffClient.createSocket("127.0.0.1",80)
     steffClient.getInfo()
     
     #except:
@@ -62,4 +62,4 @@ def main():
     steffClient.sendData()    
      #except Exception as error:
         #print("Es ist ein Fehler beim Versenden der Daten entstanden."+ error)
-main
+main()
