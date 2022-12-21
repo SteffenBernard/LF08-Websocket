@@ -47,9 +47,9 @@ def main():
     
     try:
 
-    steffServer = Server("600 W","Intel i9",3.6, "64 GB", "Windows 10", "TCP-IP", "127.0.0.1")  
+        steffServer = Server("600 W","Intel i9",3.6, "64 GB", "Windows 10", "TCP-IP", "127.0.0.1")  
 
-    steffServer.createSocket("127.0.0.1",80)
+        steffServer.createSocket("127.0.0.1",80)
     except Exception as error:
         print("Fehler beim Socketerstellen: "+ str(error))
 
@@ -58,5 +58,5 @@ def main():
         steffServer.runningServer()
     except Exception as error:
         print("Fehler beim Serverstarten: " + str(error))
-        self.web_socket.close()
+        steffServer.web_socket.close()
 main()

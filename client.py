@@ -50,16 +50,17 @@ class Client(computer.Computer):
          # #
          #    
 def main():
-    #try:    
-    steffClient = Client("900 W","Intel i7",3.6, "16 GB", "Windows 10", "192.168.178.231","127.0.0.1", "80")
+    try:    
+        steffClient = Client("900 W","Intel i7",3.6, "16 GB", "Windows 10", "192.168.178.231","127.0.0.1", "80")
 
-    steffClient.createSocket("127.0.0.1",80)
-    steffClient.getInfo()
+        steffClient.createSocket("127.0.0.1",80)
+        steffClient.getInfo()
+        
+    except:
+        print("Es ist ein Fehler beim Erstellen des Client-Sockets entstanden.")
     
-    #except:
-     #   print("Es ist ein Fehler beim Erstellen des Client-Sockets entstanden.")
-     #try:
-    steffClient.sendData()    
-     #except Exception as error:
-        #print("Es ist ein Fehler beim Versenden der Daten entstanden."+ error)
+    try:
+        steffClient.sendData()    
+    except Exception as error:
+        print("Es ist ein Fehler beim Versenden der Daten entstanden."+ error)
 main()
