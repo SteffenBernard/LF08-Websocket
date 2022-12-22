@@ -60,7 +60,7 @@ def main():
         print("Es ist ein Fehler beim Erstellen des Client-Sockets entstanden.")
     
     try:
-        steffClient.sendData()    
+        steffClient.sendData()  #GETINFO SENDEN!!!!!  
     except Exception as error:
         print("Es ist ein Fehler beim Versenden der Daten entstanden."+ error)
 main()

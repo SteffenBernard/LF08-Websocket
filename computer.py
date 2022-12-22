@@ -2,12 +2,12 @@ import platform
 
 
 class Computer:
-    powerSupply = "800 W"
-    _cpuSpeed = 0.0
-    _cpu = ""
-    _ram = 0
-    _os = ""
-    _ip = ""
+    powerSupply = "0 W" #string
+    _cpuSpeed = 0.0 #double
+    _cpu = "" #string
+    _ram = 0 #int
+    _os = ""#str
+    _ip = ""#str
     
     def __init__(self,powerSupply,_cpu,_cpuSpeed,_ram,_os,_ip): #hier müssen keine protected, public gesetzt werden nur Platzhalter
         

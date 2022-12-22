@@ -8,9 +8,11 @@ class Server(computer.Computer):
     __sockIP = "0.0.0.0"
     __sockPort = 80 
 
-    def __init__(self,powerSupply,_cpu,_cpuSpeed,_ram,_os,_ip,_service): #__sockIP,__sockPort???
+    def __init__(self,powerSupply,_cpu,_cpuSpeed,_ram,_os,_ip,_service,__sockIP,__sockPort): #__sockIP,__sockPort???
         super().__init__(powerSupply,_cpu,_cpuSpeed,_ram,_os,_ip)
         self._service = _service
+        self.__sockIP = __sockIP
+        self.__sockPort = __sockPort
         
 
     def createSocket(self,__sockIP,__sockPort):
@@ -47,7 +49,7 @@ def main():
     
     try:
 
-        steffServer = Server("600 W","Intel i9",3.6, "64 GB", "Windows 10", "TCP-IP", "127.0.0.1")  
+        steffServer = Server("600 W","Intel i7",3.6, "64 GB", "Windows 10", "TCP-IP", "127.0.0.1")  
 
         steffServer.createSocket("127.0.0.1",80)
     except Exception as error:
