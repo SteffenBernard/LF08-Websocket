@@ -26,7 +26,8 @@ class Computer:
         print("IPAdresse:" + self._ip)
         print()
 
-asusPC = Computer("900 W","Intel i7",3.6, "16 GB", "Windows 10", "192.168.178.231")
-
-asusPC.getInfo()
+#####TEST
+#steffPC = Computer("900 W","INTEL i7",3.6, "16 GB", "Windows 10", "192.168.178.231")
+steffPC = Computer("900 W",platform.machine(),3.6, "16 GB", platform.system(), platform.node())#module platform
+steffPC.getInfo()
 
