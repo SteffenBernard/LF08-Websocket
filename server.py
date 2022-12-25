@@ -1,14 +1,14 @@
-import computer
+from computer import Computer #von computer.py die Computer Parent-Klasse importieren
 import socket
+import platform
 
-
-class Server(computer.Computer):
+class Server(Computer): # Vererbung
     
-    _service = "TCP WEB SOCKET Server"
+    _service = ""
     __sockIP = "0.0.0.0"
-    __sockPort = 80 
+    __sockPort = 0 
 
-    def __init__(self,powerSupply,_cpu,_cpuSpeed,_ram,_os,_ip,_service,__sockIP,__sockPort): #__sockIP,__sockPort???
+    def __init__(self,powerSupply,_cpu,_cpuSpeed,_ram,_os,_ip,_service,__sockIP,__sockPort):#???
         super().__init__(powerSupply,_cpu,_cpuSpeed,_ram,_os,_ip)
         self._service = _service
         self.__sockIP = __sockIP
@@ -37,7 +37,7 @@ class Server(computer.Computer):
         with conn:
             print("Server verbunden mit " + str(addr[0]) + " auf Port " + str(self.__sockport))
 
-        while data.lower != "shutdown": #wenn vom Client ein Shutdown kommt egal welche Schreibweise FALSE
+        while data.lower != "shutdown": #wenn vom Client ein Shutdown kommt--- lower: egal welche Schreibweise FALSE
             data = conn.recv(1024)
             steffTalks = data.decode()
             print("empfangen von: " + str(addr[0]) + steffTalks)
@@ -45,20 +45,14 @@ class Server(computer.Computer):
         self.web_socket.close()
 
 
-def main():
+if __name__== "__main__":
+    steffServer = Server("900 W",platform.machine(),3.6, "16 GB", platform.system(),"127.0.0.1",2022)  
+    #("900 W",platform.machine(),3.6, "16 GB", platform.system(), platform.node())#module platform und Computer Klasse plus ServerIP u. Port
+    #try: try except besser in Methoden() verwenden 
+    steffServer.createSocket("127.0.0.1",2022)
     
-    try:
-
-        steffServer = Server("600 W","Intel i7",3.6, "64 GB", "Windows 10", "TCP-IP", "127.0.0.1")  
-
-        steffServer.createSocket("127.0.0.1",80)
-    except Exception as error:
-        print("Fehler beim Socketerstellen: "+ str(error))
-
-
-    try:
-        steffServer.runningServer()
-    except Exception as error:
-        print("Fehler beim Serverstarten: " + str(error))
-        steffServer.web_socket.close()
-main()
+    #print("Fehler beim Socketerstellen: "+ str(error))
+    steffServer.runningServer()
+    #except Exception as error:
+    #print("Fehler beim Serverstarten: " + str(error))
+    #steffServer.web_socket.close()

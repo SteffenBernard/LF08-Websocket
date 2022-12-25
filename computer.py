@@ -19,15 +19,17 @@ class Computer:
         self._ip = _ip
 
     def getInfo(self):
-        print("Netzteil:" + self.powerSupply)
-        print("CPU:" + self._cpu )
-        print("RAM:" + self._ram)
-        print("Betriebssystem:" + self._os)
-        print("IPAdresse:" + self._ip)
-        print()
+        print("Netzteil:" + str(self.powerSupply))
+        print("CPU:" + str(self._cpu))
+        print("RAM:" + str(self._ram))
+        print("Betriebssystem:" + str(self._os))
+        print("IPAdresse:" + str(self._ip))
+        print() #Leerzeile
 
-#####TEST
-#steffPC = Computer("900 W","INTEL i7",3.6, "16 GB", "Windows 10", "192.168.178.231")
-steffPC = Computer("900 W",platform.machine(),3.6, "16 GB", platform.system(), platform.node())#module platform
-steffPC.getInfo()
+
+if __name__== "__main__": #Danke Julian
+    #####TEST
+    #steffPC = Computer("900 W","INTEL i7",3.6, "16 GB", "Windows 10", "192.168.178.231")
+    steffPC = Computer("900 W",platform.machine(),3.6, "16 GB", platform.system(), platform.node())#module platform
+    steffPC.getInfo()
 
