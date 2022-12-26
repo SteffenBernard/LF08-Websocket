@@ -32,6 +32,8 @@ class Server(Computer): # Vererbung
     def runningServer(self,__sockIP, __sockPort):
         ####TEST 
         # print("Server läuft")
+        steffTalks = ""
+
         self.web_socket.listen()
         conn, addr = self.web_socket.accept()
         with conn:
@@ -46,13 +48,13 @@ class Server(Computer): # Vererbung
 
 
 if __name__== "__main__":
-    steffServer = Server("900 W",platform.machine(),3.6, "16 GB", platform.system(),"127.0.0.1",2022)  
+    steffServer = Server("900 W",platform.machine(),3.6, "16 GB", platform.system(),platform.node(), platform.system(),"127.0.0.1",2022)  
     #("900 W",platform.machine(),3.6, "16 GB", platform.system(), platform.node())#module platform und Computer Klasse plus ServerIP u. Port
     #try: try except besser in Methoden() verwenden 
     steffServer.createSocket("127.0.0.1",2022)
     
     #print("Fehler beim Socketerstellen: "+ str(error))
-    steffServer.runningServer()
+    steffServer.runningServer("127.0.0.1",2022)
     #except Exception as error:
     #print("Fehler beim Serverstarten: " + str(error))
     #steffServer.web_socket.close()
