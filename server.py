@@ -29,7 +29,7 @@ class Server(Computer): # Vererbung
 
 
 
-    def runningServer(self,__sockIP, __sockPort):
+    def runningServer(self):
         ####TEST 
         # print("Server läuft")
         steffTalks = ""
@@ -37,14 +37,15 @@ class Server(Computer): # Vererbung
         self.web_socket.listen()
         conn, addr = self.web_socket.accept()
         with conn:
-            print("Server verbunden mit " + str(addr[0]) + " auf Port " + str(self.__sockport))
-
-        while data.lower != "shutdown": #wenn vom Client ein Shutdown kommt--- lower: egal welche Schreibweise FALSE
-            data = conn.recv(1024)
-            steffTalks = data.decode()
-            print("empfangen von: " + str(addr[0]) + steffTalks)
+            print("Server verbunden mit " + str(addr[0]) + " auf Port " + str(self.__sockPort))
         
-        self.web_socket.close()
+            while steffTalks.lower() != "shutdown": #wenn vom Client ein Shutdown kommt--- lower: egal welche Schreibweise FALSE
+                data = conn.recv(1024)
+                steffTalks = data.decode()
+                print("empfangen von: " + str(addr[0]) + " " + steffTalks)
+                conn.sendall(("empfangen von: " + str(addr[0]) + " " + steffTalks).encode())
+            
+            self.web_socket.close()
 
 
 if __name__== "__main__":
@@ -54,7 +55,7 @@ if __name__== "__main__":
     steffServer.createSocket("127.0.0.1",2022)
     
     #print("Fehler beim Socketerstellen: "+ str(error))
-    steffServer.runningServer("127.0.0.1",2022)
+    steffServer.runningServer()
     #except Exception as error:
     #print("Fehler beim Serverstarten: " + str(error))
     #steffServer.web_socket.close()
