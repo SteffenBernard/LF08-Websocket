@@ -78,7 +78,7 @@ class Client(Computer):
 if __name__ == '__main__': #Danke Julian
     #def main():
     #try:  #besser in Funktionen Fehler abfangen   
-    steffClient = Client("900 W",platform.processor,3.6, "16 GB", "Windows 10", "192.168.178.231")
+    steffClient = Client("900 W",platform.processor(),3.6, "16 GB", "Windows 10", "192.168.178.231")
     steffClient.createSocket("127.0.0.1",2022)
     steffClient.getInfo()
     steffClient.sendData() 
